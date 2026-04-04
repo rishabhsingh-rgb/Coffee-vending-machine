@@ -38,3 +38,10 @@ class CoffeeMachine:
         self.order_cart = []
         self.total_cost = 0
         self.extra_sugar = 0
+
+    def check_resources(self, ingredients):
+        for item in ingredients:
+            if self.resources[item] < ingredients[item]:
+                messagebox.showerror("Error", f"{item} is insufficient")
+                return False
+        return True
