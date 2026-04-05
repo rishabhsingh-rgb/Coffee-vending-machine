@@ -66,4 +66,15 @@ class CoffeeMachine:
             messagebox.showinfo("Change", f"Return change {total-price} Rs")
 
         return True
+        
+    def add_to_order(self, choice):
+
+        drink = self.menu[choice]
+
+        if self.check_resources(drink["ingredients"]):
+
+            self.order_cart.append(choice)
+            self.total_cost += drink["price"]
+
+            messagebox.showinfo("Order Added", f"{choice} added to order")
 
