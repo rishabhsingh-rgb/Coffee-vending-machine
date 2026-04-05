@@ -49,3 +49,21 @@ class CoffeeMachine:
     def deduct_resources(self, ingredients):
         for item in ingredients:
             self.resources[item] -= ingredients[item]
+
+    def process_payment(self, price):
+
+        five = simpledialog.askinteger("Coins","5Rs coins?")
+        ten = simpledialog.askinteger("Coins","10Rs coins?")
+        twenty = simpledialog.askinteger("Coins","20Rs coins?")
+
+        total = five*5 + ten*10 + twenty*20
+
+        if total < price:
+            messagebox.showerror("Payment","Insufficient money")
+            return False
+
+        if total > price:
+            messagebox.showinfo("Change", f"Return change {total-price} Rs")
+
+        return True
+
