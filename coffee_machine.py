@@ -45,3 +45,7 @@ class CoffeeMachine:
                 messagebox.showerror("Error", f"{item} is insufficient")
                 return False
         return True
+
+    def deduct_resources(self, ingredients):
+        for item in ingredients:
+            self.resources[item] -= ingredients[item]
