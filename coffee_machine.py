@@ -82,3 +82,45 @@ class CoffeeMachine:
 
         self.extra_sugar += 5
         messagebox.showinfo("Extra Sugar", "Extra sugar added")
+
+    def place_order(self):
+
+        if not self.order_cart:
+            messagebox.showerror("Order","No items in order")
+            return
+
+        order_details = "\n".join(self.order_cart)
+
+        confirm = messagebox.askyesno(
+            "Confirm Order",
+            f"Items:\n{order_details}\n\nTotal Cost: {self.total_cost} Rs"
+        )
+
+        if not confirm:
+            # clear the cart if user cancels
+            self.order_cart = []
+            self.total_cost = 0
+            self.extra_sugar = 0
+            messagebox.showinfo("Order Cancelled","Previous order cleared")
+            return
+
+        if self.process_payment(self.total_cost):
+
+            for item in self.order_cart:
+                drink = self.menu[item]
+                self.deduct_resources(drink["ingredients"])
+                self.profit += drink["profit"]
+
+            if self.extra_sugar > 0:
+                self.resources["sugar"] -= self.extra_sugar
+
+            self.money += self.total_cost
+
+            messagebox.showinfo("Coffee Machine","Order Ready ❤️ Enjoy!")
+
+        else:
+            messagebox.showinfo("Order Cancelled","Order cleared due to insufficient payment")
+         
+        self.order_cart = []
+        self.total_cost = 0
+        self.extra_sugar = 0
