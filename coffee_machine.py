@@ -78,3 +78,7 @@ class CoffeeMachine:
 
             messagebox.showinfo("Order Added", f"{choice} added to order")
 
+    def add_extra_sugar(self):
+
+        self.extra_sugar += 5
+        messagebox.showinfo("Extra Sugar", "Extra sugar added")
