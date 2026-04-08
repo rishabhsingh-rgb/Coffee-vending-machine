@@ -124,3 +124,13 @@ class CoffeeMachine:
         self.order_cart = []
         self.total_cost = 0
         self.extra_sugar = 0
+
+    def admin_login(self):
+
+        password = simpledialog.askstring("Admin","Enter admin password", show="*")
+
+        if password == self.admin_password:
+            return True
+        else:
+            messagebox.showerror("Access","Wrong password")
+            return False
