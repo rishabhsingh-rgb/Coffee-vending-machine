@@ -134,3 +134,19 @@ class CoffeeMachine:
         else:
             messagebox.showerror("Access","Wrong password")
             return False
+    def report(self):
+
+        if not self.admin_login():
+            return
+
+        report_text = f"""
+Milk: {self.resources['milk']} ml
+Milk Foam: {self.resources['milk_foam']} ml
+Coffee: {self.resources['coffee']} gm
+Sugar: {self.resources['sugar']} gm
+
+Money: {self.money} Rs
+Profit: {self.profit} Rs
+"""
+
+        messagebox.showinfo("Machine Report", report_text)
