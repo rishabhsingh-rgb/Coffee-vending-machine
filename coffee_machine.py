@@ -150,3 +150,20 @@ Profit: {self.profit} Rs
 """
 
         messagebox.showinfo("Machine Report", report_text)
+   
+    def refill(self):
+
+        if not self.admin_login():
+            return
+
+        milk = simpledialog.askinteger("Refill","Add milk (ml)")
+        sugar = simpledialog.askinteger("Refill","Add sugar (gm)")
+        coffee = simpledialog.askinteger("Refill","Add coffee (gm)")
+        foam = simpledialog.askinteger("Refill","Add milk foam (ml)")
+
+        self.resources["milk"] += milk
+        self.resources["sugar"] += sugar
+        self.resources["coffee"] += coffee
+        self.resources["milk_foam"] += foam
+
+        messagebox.showinfo("Refill","Resources refilled")
