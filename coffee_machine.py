@@ -167,3 +167,10 @@ Profit: {self.profit} Rs
         self.resources["milk_foam"] += foam
 
         messagebox.showinfo("Refill","Resources refilled")
+        
+    def off(self):
+
+        if not self.admin_login():
+            return
+
+        root.destroy()
