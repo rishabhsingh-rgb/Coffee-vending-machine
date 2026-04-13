@@ -174,3 +174,55 @@ Profit: {self.profit} Rs
             return
 
         root.destroy()
+
+machine = CoffeeMachine()
+
+root = Tk()
+root.title("Coffee Machine")
+root.geometry("400x550")
+root.config(bg="gray")
+root.option_add("*Font", "Arial 16")
+
+title = Label(root,text="Coffee Machine",font=("Courier New",25,"bold"),
+              bg="saddlebrown",fg="gold")
+title.pack(pady=10)
+
+btn1 = Button(root,text="Coffee (80Rs)",font=("fixedsys",13),relief=RAISED,bg="seagreen",width=18,
+                 command=lambda: machine.add_to_order("coffee"))
+btn1.place(x=123,y=80)
+
+btn2 = Button(root,text="Latte (150Rs)",font=("fixedsys",13),relief=RAISED,bg="seagreen",width=18,
+                 command=lambda: machine.add_to_order("latte"))
+btn2.place(x=123,y=125)
+
+btn3 = Button(root,text="Cappuccino (120Rs)",font=("fixedsys",13),relief=RAISED,bg="seagreen",width=18,
+                 command=lambda: machine.add_to_order("cappuccino"))
+btn3.place(x=123,y=170)
+
+# extra sugar button
+sugar_btn = Button(root,text="Extra Sugar",relief=RAISED,bg="tan",font=("Arial",13,"italic"),width=13,
+                   command=machine.add_extra_sugar)
+sugar_btn.place(x=25,y=245)
+
+# place order button
+order_btn = Button(root,text="Place Order",relief=RAISED,bg="tan",font=("Arial",13,"italic"),width=13,
+                   command=machine.place_order)
+order_btn.place(x=235,y=245)
+
+admin_txt=Label(root,text="Admin Options",bg="crimson",
+                font=("Courier New",12,"bold"))
+admin_txt.place(x=133, y=330)
+
+report_btn =Button(root,text="Report",relief=RAISED,bg="pink",font=("fixedsys",13),width=18,
+                       command=machine.report)
+report_btn.place(x=123,y=360)
+
+refill_btn =Button(root,text="Refill",relief=RAISED,bg="pink",font=("fixedsys",13),width=18,
+                       command=machine.refill)
+refill_btn.place(x=123,y=405)
+
+off_btn =Button(root,text="Turn Off",relief=RAISED,bg="pink",font=("fixedsys",13),width=18,
+                    command=machine.off)
+off_btn.place(x=123,y=450)
+
+root.mainloop()
